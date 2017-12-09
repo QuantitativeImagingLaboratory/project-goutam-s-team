@@ -183,7 +183,8 @@ def erosion(image,threshold,window):
     return r1
 def median(image,kernel):
     ImgRow, ImgColumn = image.shape
-    values = np.zeros((ImgRow, ImgColumn), np.uint8)
+    values = []
+    output = np.zeros((ImgRow, ImgColumn), np.uint8)
     for x in range(ImgRow):
         for y in range(ImgColumn):
             value1 = max(x - kernel, 0)
@@ -196,6 +197,7 @@ def median(image,kernel):
     values = sorted(values)
     median1 = int(len(values) / 2)
     output[x, y] = values[median1]
+    return output
 
 
 
